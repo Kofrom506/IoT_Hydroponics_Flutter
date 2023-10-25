@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "1037163665870",
+    "firebase_url": "https://esp32-hydroponics-b613a-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "esp32-hydroponics-b613a",
+    "storage_bucket": "esp32-hydroponics-b613a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037163665870:android:6f3392bc9b0cacb957f39f",
+        "android_client_info": {
+          "package_name": "com.example.flutter_hydroponics"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr94YBT3SF0pXMegAERZx5ejaIJrqC3ls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037163665870:android:dca65f6edaf0731257f39f",
+        "android_client_info": {
+          "package_name": "com.hydroponics"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr94YBT3SF0pXMegAERZx5ejaIJrqC3ls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
