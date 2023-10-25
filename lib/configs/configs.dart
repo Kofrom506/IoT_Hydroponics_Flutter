@@ -7,13 +7,13 @@ class Configs {
 
   //Colors for theme
 
-  static const primaryColor = Color.fromRGBO(3, 95, 239, 1);
+  static const primaryColor = Color.fromRGBO(183, 203, 138, 1); // Fresh Green
 
-  static const navBarColor = Color.fromRGBO(160, 160, 160, 1);
-  static const secondaryColor = Color.fromRGBO(228, 248, 255, 1);
-  static const tertiaryColor = Color.fromRGBO(87, 80, 145, 1);
+  static const navBarColor = Color.fromRGBO(33, 150, 243, 1,); // Water Blue
+  static const secondaryColor =  Color.fromRGBO(255, 193, 7,1);   // Sunshine Yellow
+  static const tertiaryColor = Color.fromRGBO(121, 85, 72, 1);   // Earthy Brown
   static const quaternaryColor = Color.fromRGBO(0, 0, 47, 1);
-  static const pentiaryColor = Color.fromRGBO(181, 84, 0, 1);
+  static const pentiaryColor = Color.fromRGBO(156, 39, 176, 1);  // Nutrient Purple;
   static const backgroundColor = Color.fromRGBO(35, 65, 93, 1);
   static const statusBarColor = Color.fromRGBO(27, 26, 94, 1);
   static const stickyNotesColor = Color.fromRGBO(254, 255, 156, 1);

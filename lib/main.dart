@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hydroponics/configs/configs.dart';
 import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'screens/home/home_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
+
 }
 
 class MyApp extends StatefulWidget {
@@ -23,7 +29,7 @@ class _MyAppState extends State<MyApp> {
   Widget? getPage() {
     switch(_currentIndex) {
       case 0:
-        return Placeholder();
+        return HomePage();
       case 1:
         return Placeholder();
       case 2:
@@ -67,11 +73,9 @@ class _MyAppState extends State<MyApp> {
                               });
                             }
                             else{
-                              print("AAAA");
                               showModalBottomSheet(
                                   context: context,
-                                  builder: (context) => BusLocationPage());
-
+                                  builder: (context) => Placeholder());
                             }
                           },
                           child: Container(
