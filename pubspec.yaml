@@ -40,6 +40,7 @@ dependencies:
   carousel_slider: ^4.2.1
   firebase_core: ^2.20.0
   firebase_database: ^10.3.2
+  fl_chart: ^0.64.0
 
 dev_dependencies:
   flutter_test:
@@ -64,9 +65,18 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/plants/1.png
+    - assets/plants/2.png
+    - assets/plants/3.png
+    - assets/plants/4.png
+    - assets/plants/5.png
+    - assets/plants/6.png
+    - assets/plants/7.png
+    - assets/plants/8.png
+    - assets/plants/9.png
+    - assets/ui.png
+    - assets/dte.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

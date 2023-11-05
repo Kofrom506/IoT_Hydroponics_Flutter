@@ -10,7 +10,7 @@ class Configs {
   static const primaryColor = Color.fromRGBO(183, 203, 138, 1); // Fresh Green
 
   static const navBarColor = Color.fromRGBO(33, 150, 243, 1,); // Water Blue
-  static const secondaryColor =  Color.fromRGBO(255, 193, 7,1);   // Sunshine Yellow
+  static const secondaryColor =  Color.fromRGBO(103, 147, 0,1);   // Sunshine Yellow
   static const tertiaryColor = Color.fromRGBO(121, 85, 72, 1);   // Earthy Brown
   static const quaternaryColor = Color.fromRGBO(0, 0, 47, 1);
   static const pentiaryColor = Color.fromRGBO(156, 39, 176, 1);  // Nutrient Purple;

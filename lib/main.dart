@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hydroponics/configs/configs.dart';
+import 'package:flutter_hydroponics/screens/about/about_page.dart';
+import 'package:flutter_hydroponics/screens/chart_page/chart_page.dart';
 import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'screens/home/home_page.dart';
+import 'configs/configs.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
   runApp(MyApp());
-
 }
 
 class MyApp extends StatefulWidget {
@@ -22,7 +24,7 @@ class _MyAppState extends State<MyApp> {
   final List<IconData> _icons = [
     FontAwesomeIcons.house,
     FontAwesomeIcons.cameraRetro,
-    FontAwesomeIcons.bus,
+    FontAwesomeIcons.seedling,
     FontAwesomeIcons.lineChart,
     FontAwesomeIcons.infoCircle,
   ];
@@ -35,9 +37,9 @@ class _MyAppState extends State<MyApp> {
       case 2:
         return Placeholder();
       case 3:
-        return Placeholder();
+        return ChartPage();
       case 4:
-        return Placeholder();
+        return AboutPage();
       default:
         return Placeholder();
     }
@@ -58,47 +60,55 @@ class _MyAppState extends State<MyApp> {
                 body: getPage(),
                 bottomNavigationBar: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: _icons.asMap().entries.map((entry) {
-                        final index = entry.key;
-                        final icon = entry.value;
+                  child:   Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Configs.primaryColor, // Green overlay with opacity
+                        borderRadius: BorderRadius.circular(50.0),
+                      ),
 
-                        return GestureDetector(
-                          onTap: () {
-                            if(index!=2) {
-                              setState(() {
-                                _currentIndex = index;
-                              });
-                            }
-                            else{
-                              showModalBottomSheet(
-                                  context: context,
-                                  builder: (context) => Placeholder());
-                            }
-                          },
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
-                            decoration: index == 2
-                                ? BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Configs.primaryColor)
-                                : null,
-                            child: index == 2 ? Icon(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: _icons.asMap().entries.map((entry) {
+                          final index = entry.key;
+                          final icon = entry.value;
+
+                          return GestureDetector(
+                            onTap: () {
+                              if(index!=2) {
+                                setState(() {
+                                  _currentIndex = index;
+                                });
+                              }
+                              else{
+                                showModalBottomSheet(
+                                    context: context,
+                                    builder: (context) => Placeholder());
+                              }
+                            },
+                            child: Container(
+                              padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
+                              decoration: index == 2
+                                  ? BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Configs.secondaryColor)
+                                  : null,
+                              child: index == 2 ? Icon(
+                                  icon,
+                                  size: 25.0,
+                                  color: Colors.white
+                              ) : Icon(
                                 icon,
                                 size: 25.0,
-                                color: Colors.white
-                            ) : Icon(
-                              icon,
-                              size: 25.0,
-                              color: _currentIndex == index
-                                  ? Configs.primaryColor
-                                  : Configs.navBarColor,
+                                color: _currentIndex == index
+                                    ? Configs.secondaryColor
+                                    : Colors.white,
+                              ),
                             ),
-                          ),
-                        );
-                      }).toList(),
+                          );
+                        }).toList(),
+                      ),
                     ),
                   ),
                 ));
