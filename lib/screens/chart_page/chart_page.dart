@@ -26,81 +26,156 @@ class _ChartPageState extends State<ChartPage> {
           horizontal: 20.0,
           vertical: 10.0,
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Greenhouse",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold)),
-            SizedBox(height: 15,),
-            Stack(
-              children: <Widget>[
-                AspectRatio(
-                  aspectRatio: 1.70,
-                  child: LineChart(
-                    showAvg ? avgData() : mainData(),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Greenhouse A",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold)),
+              SizedBox(height: 15,),
+
+              SizedBox(height: 15,),
+              Text("Grafik pH",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,)),
+              Stack(
+                children: <Widget>[
+                  AspectRatio(
+                    aspectRatio: 1.70,
+                    child: LineChart(
+                      showAvg ? avgData() : mainData(),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 60,
-                  height: 34,
-                  child: TextButton(
-                    onPressed: () {
-                      setState(() {
-                        showAvg = !showAvg;
-                      });
-                    },
-                    child: Text(
-                      'avg',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color:
-                        showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
+                  SizedBox(
+                    width: 60,
+                    height: 34,
+                    child: TextButton(
+                      onPressed: () {
+                        setState(() {
+                          showAvg = !showAvg;
+                        });
+                      },
+                      child: Text(
+                        'avg',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color:
+                          showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 15,),
-            Text("Overview",
-                style: TextStyle(
+                ],
+              ),
+              SizedBox(height: 15,),
+              Text("Grafik Water Temperature",
+                  style: TextStyle(
                     color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold)),
-            Stack(
-              children: <Widget>[
-                AspectRatio(
-                  aspectRatio: 1.70,
-                  child: LineChart(
-                    showAvg ? avgData() : mainData(),
+                    fontSize: 20,)),
+              Stack(
+                children: <Widget>[
+                  AspectRatio(
+                    aspectRatio: 1.70,
+                    child: LineChart(
+                      showAvg ? avgData() : mainData(),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 60,
-                  height: 34,
-                  child: TextButton(
-                    onPressed: () {
-                      setState(() {
-                        showAvg = !showAvg;
-                      });
-                    },
-                    child: Text(
-                      'avg',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color:
-                        showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
+                  SizedBox(
+                    width: 60,
+                    height: 34,
+                    child: TextButton(
+                      onPressed: () {
+                        setState(() {
+                          showAvg = !showAvg;
+                        });
+                      },
+                      child: Text(
+                        'avg',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color:
+                          showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+              SizedBox(height: 15,),
+              Text("Grafik EC",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,)),
+              Stack(
+                children: <Widget>[
+                  AspectRatio(
+                    aspectRatio: 1.70,
+                    child: LineChart(
+                      showAvg ? avgData() : mainData(),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 60,
+                    height: 34,
+                    child: TextButton(
+                      onPressed: () {
+                        setState(() {
+                          showAvg = !showAvg;
+                        });
+                      },
+                      child: Text(
+                        'avg',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color:
+                          showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 15,),
+              Text("Grafik Water Level",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,)),
+              Stack(
+                children: <Widget>[
+                  AspectRatio(
+                    aspectRatio: 1.70,
+                    child: LineChart(
+                      showAvg ? avgData() : mainData(),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 60,
+                    height: 34,
+                    child: TextButton(
+                      onPressed: () {
+                        setState(() {
+                          showAvg = !showAvg;
+                        });
+                      },
+                      child: Text(
+                        'avg',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color:
+                          showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

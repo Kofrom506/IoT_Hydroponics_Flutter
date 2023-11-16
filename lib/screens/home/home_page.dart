@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hydroponics/configs/configs.dart';
+import 'package:flutter_hydroponics/models/plant.dart';
+import 'package:flutter_hydroponics/widgets/date_picker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -28,7 +30,7 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   Spacer(),
@@ -41,7 +43,7 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 25,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               SizedBox(height: 10),
@@ -57,7 +59,7 @@ class HomePage extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              PlantCarousel()
+              PlantCarousel(),
             ],
           ),
         ),
@@ -112,8 +114,17 @@ class RoundedRectangleCard extends StatelessWidget {
                     EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
                     child: VerticalDivider(color: Colors.white),
                   ),
-                  Text("Check your Basil plants",
-                      style: TextStyle(color: Colors.white, fontSize: 18)),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Check your Basil plants!",
+                          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w800)),
+                      Text("Today you have to water 2 weeks until harvest",
+                          style: TextStyle(color: Colors.white, fontSize: 12)),
+                    ],
+                  ),
+
                 ],
               ),
             ),
@@ -193,29 +204,25 @@ class PlantCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
-                CapsuleWithOverlayText()
+                CapsuleWithOverlayText(),
+
               ],
             ),
           ),
+
         ],
+
       ),
+
     );
+
   }
 }
 
 class PlantCarousel extends StatelessWidget {
-  final List<String> plantImages = [
-    'assets/plants/1.png',
-    'assets/plants/2.png',
-    'assets/plants/3.png',
-    'assets/plants/4.png',
-    'assets/plants/5.png',
-    'assets/plants/6.png',
-    'assets/plants/7.png',
-    'assets/plants/8.png',
-    'assets/plants/9.png',
-    // Add more plant image URLs here
-  ];
+
+  final List<Plant> plantList = Plant.plantList;
+
 
   @override
   Widget build(BuildContext context) {
@@ -229,7 +236,7 @@ class PlantCarousel extends StatelessWidget {
         enlargeFactor: 0.2,
         autoPlay: false,
       ),
-      items: plantImages.map((imageURL) {
+      items: plantList.map((plant) {
         return Stack(
           children: [Container(
             width: double.infinity,
@@ -241,7 +248,7 @@ class PlantCarousel extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12.0),
                 child:  Image.asset(
-                    imageURL,
+                    plant.imageName,
                     
                     width: screenWidth * 0.1,
                     fit:BoxFit.fitWidth
@@ -256,7 +263,7 @@ class PlantCarousel extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    plantImages,
+                    plant.name,
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 24,
@@ -264,9 +271,10 @@ class PlantCarousel extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '(Ocimum Basilium)',
+                    plant.description,
                     style: TextStyle(
                       color: Colors.white,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ],

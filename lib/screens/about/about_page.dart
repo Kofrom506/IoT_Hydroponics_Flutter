@@ -6,11 +6,10 @@ class AboutPage extends StatefulWidget {
 }
 
 class _AboutPageListState extends State<AboutPage> {
-
   final List<Item> _items = <Item>[
-    Item('Apa itu?', 'Bikun Tracker adalah '),
-    Item('Bagaimana Cara Memakai Bikun Tracker?', 'Bikun Tracker adalah '),
-    Item('Tim di Balik Aplikasi', 'Bikun Tracker adalah '),
+    Item('Apa itu?', 'Bikun Hydroponic App adalah '),
+    Item('Bagaimana Cara Memakai Hydroponic App?', 'Hydroponic App adalah '),
+    Item('Tim di Balik Aplikasi', 'Hydroponic App adalah '),
   ];
 
   @override

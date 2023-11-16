@@ -1,7 +1,7 @@
-import 'package:uuid/uuid.dart';
+// import 'package:uuid/uuid.dart';
 
 class Plant {
-  String id;
+  int? id;
   String name;
   double pHMin;
   double pHMax;
@@ -11,14 +11,15 @@ class Plant {
   String description;
 
   Plant({
+    this.id,
     required this.name,
     required this.pHMin,
     required this.pHMax,
     required this.ecMin,
     required this.ecMax,
     required this.imageName,
-    this.description,
-  }) : id = Uuid().v4();
+    required this.description,
+  });
 
   static List<Plant> plantList = [
     Plant(
@@ -27,7 +28,7 @@ class Plant {
       pHMax: 6.5,
       ecMin: 600,
       ecMax: 900,
-      imageName: "selada",
+      imageName: 'assets/plants/selada.png',
       description: "Sayuran daun hijau yang biasa digunakan sebagai bahan dalam salad. Selada kaya akan serat, vitamin, dan mineral.",
     ),
     Plant(
@@ -36,7 +37,7 @@ class Plant {
       pHMax: 6.5,
       ecMin: 1000,
       ecMax: 2000,
-      imageName: "tomat",
+      imageName: 'assets/plants/tomat.png',
       description: "Buah yang biasa dianggap sebagai sayuran, tomat memiliki warna merah cerah dan rasa yang manis serta sedikit asam. Tomat kaya akan vitamin C, karotenoid, dan likopen.",
     ),
     Plant(
@@ -45,7 +46,7 @@ class Plant {
       pHMax: 6.5,
       ecMin: 600,
       ecMax: 1200,
-      imageName: "kangkung",
+      imageName: 'assets/plants/kangkung.png',
       description: "Sayuran air yang sering digunakan dalam masakan Asia Tenggara. Kangkung memiliki daun hijau dan batang berair serta kaya akan vitamin dan mineral seperti vitamin A, vitamin C, kalsium, dan besi.",
     ),
     Plant(
@@ -63,7 +64,7 @@ class Plant {
       pHMax: 6.1,
       ecMin: 900,
       ecMax: 1100,
-      imageName: "stroberi",
+      imageName: 'assets/plants/strawberry.png',
       description: "Buah yang biasa dianggap sebagai sayuran, stroberi memiliki rasa manis dan asam dengan warna merah cerah. Stroberi kaya akan vitamin C, serat, dan antioksidan.",
     ),
     Plant(
@@ -72,7 +73,7 @@ class Plant {
       pHMax: 7.1,
       ecMin: 750,
       ecMax: 1000,
-      imageName: "pakcoy",
+      imageName: 'assets/plants/pakcoy.png',
       description: "Sayuran hijau yang sering digunakan dalam masakan Asia Tenggara dan Tionghoa. Pak coy kaya akan vitamin C, kalsium, dan zat besi.",
     ),
     Plant(
@@ -81,7 +82,7 @@ class Plant {
       pHMax: 6,
       ecMin: 400,
       ecMax: 900,
-      imageName: "parsley",
+      imageName: 'assets/plants/parsley.png',
       description: "Sayuran hijau yang sering digunakan sebagai bahan dalam masakan. Parsley kaya akan vitamin C, vitamin K, dan zat besi.",
     ),
     Plant(
@@ -90,7 +91,7 @@ class Plant {
       pHMax: 7,
       ecMin: 1250,
       ecMax: 1500,
-      imageName: "kubis",
+      imageName: 'assets/plants/kubis.png',
       description: "Sayuran yang berasal dari keluarga sawi-sawian. Kubis memiliki daun yang tebal dan kaya akan vitamin C, serat, dan antioksidan.",
     ),
     Plant(
@@ -99,10 +100,22 @@ class Plant {
       pHMax: 6.8,
       ecMin: 1200,
       ecMax: 1750,
-      imageName: "brokoli",
+      imageName: 'assets/plants/brokoli.png',
       description: "Sayuran hijau yang sering digunakan dalam masakan. Brokoli kaya akan vitamin C, vitamin K, dan antioksidan seperti sulforaphane. Brokoli juga dikenal sebagai sayuran yang baik untuk kesehatan jantung dan pencegahan kanker.",
     ),
   ];
 }
 
-}
+// final List<String> plantImages = [
+//   'assets/plants/kangkung.png',
+//   'assets/plants/selada.png',
+//   'assets/plants/tomat.png',
+//   'assets/plants/kangkung.png',
+//   'assets/plants/strawberry.png',
+//   'assets/plants/pakcoy.png',
+//   'assets/plants/parsley.png',
+//   'assets/plants/kubis.png',
+//   'assets/plants/brokoli.png',
+//   // Add more plant image URLs here
+// ];
+

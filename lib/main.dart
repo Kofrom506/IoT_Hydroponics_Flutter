@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hydroponics/configs/configs.dart';
 import 'package:flutter_hydroponics/screens/about/about_page.dart';
 import 'package:flutter_hydroponics/screens/chart_page/chart_page.dart';
+import 'package:flutter_hydroponics/screens/pompa/pompa_page.dart';
+import 'package:flutter_hydroponics/screens/progress/progress_page.dart';
 import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -9,8 +11,9 @@ import 'screens/home/home_page.dart';
 import 'configs/configs.dart';
 
 Future<void> main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 
@@ -33,9 +36,9 @@ class _MyAppState extends State<MyApp> {
       case 0:
         return HomePage();
       case 1:
-        return Placeholder();
+        return ProgressPage();
       case 2:
-        return Placeholder();
+        return PompaPage();
       case 3:
         return ChartPage();
       case 4:
@@ -84,7 +87,7 @@ class _MyAppState extends State<MyApp> {
                               else{
                                 showModalBottomSheet(
                                     context: context,
-                                    builder: (context) => Placeholder());
+                                    builder: (context) => PompaPage());
                               }
                             },
                             child: Container(
@@ -111,7 +114,8 @@ class _MyAppState extends State<MyApp> {
                       ),
                     ),
                   ),
-                ));
+                ),
+            );
           }
       ),
     );
