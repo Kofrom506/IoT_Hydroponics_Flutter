@@ -52,7 +52,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1037163665870',
     projectId: 'esp32-hydroponics-b613a',
     authDomain: 'esp32-hydroponics-b613a.firebaseapp.com',
-    databaseURL: 'https://esp32-hydroponics-b613a-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://esp32-hydroponics-b613a-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'esp32-hydroponics-b613a.appspot.com',
     measurementId: 'G-1Z8QLR08C4',
   );
@@ -62,7 +63,8 @@ class DefaultFirebaseOptions {
     appId: '1:1037163665870:android:6f3392bc9b0cacb957f39f',
     messagingSenderId: '1037163665870',
     projectId: 'esp32-hydroponics-b613a',
-    databaseURL: 'https://esp32-hydroponics-b613a-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://esp32-hydroponics-b613a-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'esp32-hydroponics-b613a.appspot.com',
   );
 
@@ -71,7 +73,8 @@ class DefaultFirebaseOptions {
     appId: '1:1037163665870:ios:c1999e7ebfe92f3357f39f',
     messagingSenderId: '1037163665870',
     projectId: 'esp32-hydroponics-b613a',
-    databaseURL: 'https://esp32-hydroponics-b613a-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://esp32-hydroponics-b613a-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'esp32-hydroponics-b613a.appspot.com',
     iosBundleId: 'com.example.flutterHydroponics',
   );

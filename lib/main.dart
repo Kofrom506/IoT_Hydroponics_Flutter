@@ -13,7 +13,6 @@ import 'configs/configs.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
   runApp(MyApp());
 }
 
@@ -32,7 +31,7 @@ class _MyAppState extends State<MyApp> {
     FontAwesomeIcons.infoCircle,
   ];
   Widget? getPage() {
-    switch(_currentIndex) {
+    switch (_currentIndex) {
       case 0:
         return HomePage();
       case 1:
@@ -48,6 +47,7 @@ class _MyAppState extends State<MyApp> {
     }
     // return HomePage();
   }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -57,67 +57,61 @@ class _MyAppState extends State<MyApp> {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Builder(
-          builder: (context) {
-            return Scaffold(
-                body: getPage(),
-                bottomNavigationBar: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child:   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Configs.primaryColor, // Green overlay with opacity
-                        borderRadius: BorderRadius.circular(50.0),
-                      ),
+      home: Builder(builder: (context) {
+        return Scaffold(
+          body: getPage(),
+          bottomNavigationBar: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Configs.primaryColor, // Green overlay with opacity
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: _icons.asMap().entries.map((entry) {
+                    final index = entry.key;
+                    final icon = entry.value;
 
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: _icons.asMap().entries.map((entry) {
-                          final index = entry.key;
-                          final icon = entry.value;
-
-                          return GestureDetector(
-                            onTap: () {
-                              if(index!=2) {
-                                setState(() {
-                                  _currentIndex = index;
-                                });
-                              }
-                              else{
-                                showModalBottomSheet(
-                                    context: context,
-                                    builder: (context) => PompaPage());
-                              }
-                            },
-                            child: Container(
-                              padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
-                              decoration: index == 2
-                                  ? BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Configs.secondaryColor)
-                                  : null,
-                              child: index == 2 ? Icon(
-                                  icon,
-                                  size: 25.0,
-                                  color: Colors.white
-                              ) : Icon(
+                    return GestureDetector(
+                      onTap: () {
+                        if (index != 2) {
+                          setState(() {
+                            _currentIndex = index;
+                          });
+                        } else {
+                          showModalBottomSheet(
+                              context: context,
+                              builder: (context) => PompaPage());
+                        }
+                      },
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
+                        decoration: index == 2
+                            ? BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Configs.secondaryColor)
+                            : null,
+                        child: index == 2
+                            ? Icon(icon, size: 25.0, color: Colors.white)
+                            : Icon(
                                 icon,
                                 size: 25.0,
                                 color: _currentIndex == index
                                     ? Configs.secondaryColor
                                     : Colors.white,
                               ),
-                            ),
-                          );
-                        }).toList(),
                       ),
-                    ),
-                  ),
+                    );
+                  }).toList(),
                 ),
-            );
-          }
-      ),
+              ),
+            ),
+          ),
+        );
+      }),
     );
   }
 }

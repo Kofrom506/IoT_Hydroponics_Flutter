@@ -74,8 +74,7 @@ class RoundedRectangleCard extends StatelessWidget {
     return Card(
       elevation: 4,
       shape: RoundedRectangleBorder(
-        borderRadius:
-        BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(12.0),
       ),
       child: AspectRatio(
         aspectRatio: 4 / 1,
@@ -111,7 +110,7 @@ class RoundedRectangleCard extends StatelessWidget {
                   ),
                   Padding(
                     padding:
-                    EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
+                        EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
                     child: VerticalDivider(color: Colors.white),
                   ),
                   Column(
@@ -119,12 +118,14 @@ class RoundedRectangleCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("Check your Basil plants!",
-                          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.w800)),
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w800)),
                       Text("Today you have to water 2 weeks until harvest",
                           style: TextStyle(color: Colors.white, fontSize: 12)),
                     ],
                   ),
-
                 ],
               ),
             ),
@@ -203,30 +204,22 @@ class PlantCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 CapsuleWithOverlayText(),
-
               ],
             ),
           ),
-
         ],
-
       ),
-
     );
-
   }
 }
 
 class PlantCarousel extends StatelessWidget {
-
   final List<Plant> plantList = Plant.plantList;
-
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width ;
+    double screenWidth = MediaQuery.of(context).size.width;
 
     return CarouselSlider(
       options: CarouselOptions(
@@ -237,8 +230,8 @@ class PlantCarousel extends StatelessWidget {
         autoPlay: false,
       ),
       items: plantList.map((plant) {
-        return Stack(
-          children: [Container(
+        return Stack(children: [
+          Container(
             width: double.infinity,
             child: Card(
               elevation: 4,
@@ -247,41 +240,36 @@ class PlantCarousel extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12.0),
-                child:  Image.asset(
-                    plant.imageName,
-                    
-                    width: screenWidth * 0.1,
-                    fit:BoxFit.fitWidth
-                ),
+                child: Image.asset(plant.imageName,
+                    width: screenWidth * 0.1, fit: BoxFit.fitWidth),
               ),
             ),
           ),
-            Positioned(
-              top: 8,
-              left: 16,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    plant.name,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
+          Positioned(
+            top: 8,
+            left: 16,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  plant.name,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
                   ),
-                  Text(
-                    plant.description,
-                    style: TextStyle(
-                      color: Colors.white,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                ),
+                Text(
+                  plant.description,
+                  style: TextStyle(
+                    color: Colors.white,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-        ]
-        );
+          ),
+        ]);
       }).toList(),
     );
   }
@@ -294,7 +282,8 @@ class CapsuleWithOverlayText extends StatelessWidget {
       width: 150, // Adjust the width as needed
       height: 50, // Adjust the height as needed
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(50), // Half of the height for a capsule shape
+        borderRadius:
+            BorderRadius.circular(50), // Half of the height for a capsule shape
         color: Colors.white.withOpacity(0.2),
         // Background color of the capsule
       ),
@@ -306,7 +295,6 @@ class CapsuleWithOverlayText extends StatelessWidget {
             style: TextStyle(
               color: Configs.primaryColor,
               fontSize: 15,
-
             ),
           ),
         ],
