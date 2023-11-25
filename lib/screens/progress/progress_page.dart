@@ -74,6 +74,9 @@ class ProgressPage extends StatelessWidget {
     );
   }
 }
+
+
+
 class PlantList extends StatelessWidget {
   final List<Plant> plants = Plant.plantList;
 
