@@ -37,6 +37,39 @@ class _ChartPageState extends State<ChartPage> {
                       fontSize: 25,
                       fontWeight: FontWeight.bold)),
               SizedBox(height: 15,),
+          // BarChart(
+          //   BarChartData(
+          //     alignment: BarChartAlignment.spaceAround,
+          //     maxY: 10,
+          //     barGroups: [
+          //       BarChartGroupData(
+          //         x: 0,
+          //         barRods: [
+          //           BarChartRodData(
+          //
+          //             color: Colors.blue, toY: 5,
+          //           ),
+          //         ],
+          //       ),
+          //       BarChartGroupData(
+          //         x: 1,
+          //         barRods: [
+          //           BarChartRodData(
+          //             color: Colors.green, toY: 5,
+          //           ),
+          //         ],
+          //       ),
+          //       BarChartGroupData(
+          //         x: 2,
+          //         barRods: [
+          //           BarChartRodData(
+          //             color: Colors.red, toY: 3,
+          //           ),
+          //         ],
+          //       ),
+          //     ],
+          //   ),
+          // ),
 
               SizedBox(height: 15,),
               Text("Grafik pH",
@@ -77,103 +110,121 @@ class _ChartPageState extends State<ChartPage> {
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,)),
-              Stack(
-                children: <Widget>[
-                  AspectRatio(
-                    aspectRatio: 1.70,
-                    child: LineChart(
-                      showAvg ? avgData() : mainData(),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 60,
-                    height: 34,
-                    child: TextButton(
-                      onPressed: () {
-                        setState(() {
-                          showAvg = !showAvg;
-                        });
-                      },
-                      child: Text(
-                        'avg',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color:
-                          showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              // Stack(
+              //   children: <Widget>[
+              //     AspectRatio(
+              //       aspectRatio: 1.70,
+              //       child: LineChart(
+              //         showAvg ? avgData() : mainData(),
+              //       ),
+              //     ),
+              //     SizedBox(
+              //       width: 60,
+              //       height: 34,
+              //       child: TextButton(
+              //         onPressed: () {
+              //           setState(() {
+              //             showAvg = !showAvg;
+              //           });
+              //         },
+              //         child: Text(
+              //           'avg',
+              //           style: TextStyle(
+              //             fontSize: 12,
+              //             color:
+              //             showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
               SizedBox(height: 15,),
               Text("Grafik EC",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,)),
-              Stack(
-                children: <Widget>[
-                  AspectRatio(
-                    aspectRatio: 1.70,
-                    child: LineChart(
-                      showAvg ? avgData() : mainData(),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 60,
-                    height: 34,
-                    child: TextButton(
-                      onPressed: () {
-                        setState(() {
-                          showAvg = !showAvg;
-                        });
-                      },
-                      child: Text(
-                        'avg',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color:
-                          showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              // Stack(
+              //   children: <Widget>[
+              //     AspectRatio(
+              //       aspectRatio: 1.70,
+              //       child: LineChart(
+              //         showAvg ? avgData() : mainData(),
+              //       ),
+              //     ),
+              //     SizedBox(
+              //       width: 60,
+              //       height: 34,
+              //       child: TextButton(
+              //         onPressed: () {
+              //           setState(() {
+              //             showAvg = !showAvg;
+              //           });
+              //         },
+              //         child: Text(
+              //           'avg',
+              //           style: TextStyle(
+              //             fontSize: 12,
+              //             color:
+              //             showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
               SizedBox(height: 15,),
               Text("Grafik Water Level",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,)),
-              Stack(
-                children: <Widget>[
-                  AspectRatio(
-                    aspectRatio: 1.70,
-                    child: LineChart(
-                      showAvg ? avgData() : mainData(),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 60,
-                    height: 34,
-                    child: TextButton(
-                      onPressed: () {
-                        setState(() {
-                          showAvg = !showAvg;
-                        });
-                      },
-                      child: Text(
-                        'avg',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color:
-                          showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              // Stack(
+              //   children: <Widget>[
+              //     AspectRatio(
+              //       aspectRatio: 1.70,
+              //       child: LineChart(
+              //         showAvg ? avgData() : mainData(),
+              //       ),
+              //     ),
+              //     SizedBox(
+              //       width: 60,
+              //       height: 34,
+              //       child: TextButton(
+              //         onPressed: () {
+              //           setState(() {
+              //             showAvg = !showAvg;
+              //           });
+              //         },
+              //         child: Text(
+              //           'avg',
+              //           style: TextStyle(
+              //             fontSize: 12,
+              //             color:
+              //             showAvg ? Colors.white.withOpacity(0.5) : Colors.white,
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              // LineChart(LineChartData(
+              //     minX: 0,
+              //     maxX: 11,
+              //     minY: 0,
+              //     maxY: 6,
+              //     lineBarsData: [
+              //       LineChartBarData(
+              //           spots: [
+              //             FlSpot(0, 3),
+              //             FlSpot(0, 5),
+              //             FlSpot(0, 5),
+              //
+              //           ]
+              //       )
+              //     ]
+              //
+              // )
+
             ],
           ),
         ),
@@ -414,3 +465,31 @@ class _ChartPageState extends State<ChartPage> {
     );
   }
 }
+
+
+// class LineChartWidget extends StatelessWidget {
+//   final List<PricePoint> points;
+//
+//   const LineChartWidget(this.points, {Key? key})
+//       : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return AspectRatio(
+//       aspectRatio: 2,
+//       child: LineChart(
+//         LineChartData(
+//           lineBarsData: [
+//             LineChartBarData(
+//               spots: points.map((point) => FlSpot(point.x, point.y)).toList(),
+//               isCurved: false,
+//               // dotData: FlDotData(
+//               //   show: false,
+//               // ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

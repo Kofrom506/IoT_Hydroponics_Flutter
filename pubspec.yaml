@@ -43,6 +43,7 @@ dependencies:
   firebase_database: ^10.3.4
   fl_chart: ^0.64.0
   flutter_sliding_up_panel: ^2.1.1
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -77,9 +78,9 @@ flutter:
     - assets/plants/parsley.png
     - assets/plants/kubis.png
     - assets/plants/brokoli.png
+    - assets/plants/bayam.png
     - assets/ui.png
     - assets/dte.png
-    - assets/plants/bayam.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

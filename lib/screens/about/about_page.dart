@@ -16,6 +16,7 @@ class _AboutPageListState extends State<AboutPage> {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(16.0),

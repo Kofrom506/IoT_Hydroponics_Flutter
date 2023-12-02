@@ -5,10 +5,10 @@ import 'package:flutter_hydroponics/models/plant.dart';
 class PlantCarousel extends StatelessWidget {
   final List<Plant> plantList = Plant.plantList;
 
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-
     return CarouselSlider(
       options: CarouselOptions(
         height: 200,
@@ -19,17 +19,23 @@ class PlantCarousel extends StatelessWidget {
       ),
       items: plantList.map((plant) {
         return Stack(children: [
-          Container(
-            width: double.infinity,
-            child: Card(
-              elevation: 4,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12.0),
-                child: Image.asset(plant.imageName,
-                    width: screenWidth * 0.1, fit: BoxFit.fitWidth),
+          ElevatedButton(
+            style: ButtonStyle(),
+            onPressed: () => {
+              DataModal(plantData: plant,)
+            },
+            child: Container(
+              width: double.infinity,
+              child: Card(
+                elevation: 4,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12.0),
+                  child: Image.asset(plant.imageName,
+                      width: screenWidth * 0.1, fit: BoxFit.fitWidth),
+                ),
               ),
             ),
           ),
@@ -59,6 +65,31 @@ class PlantCarousel extends StatelessWidget {
           ),
         ]);
       }).toList(),
+    );
+  }
+}
+
+class DataModal extends StatelessWidget {
+  final Plant plantData;
+
+  DataModal({required this.plantData});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(16.0),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(plantData.name)
+            // Text('Person Count: ${data.personCount}', style: TextStyle(fontSize: 18)),
+            // SizedBox(height: 8),
+            // Text('Date and Time: ${data.dateTime.toString()}', style: TextStyle(fontSize: 18)),
+          ],
+        ),
+      ),
     );
   }
 }

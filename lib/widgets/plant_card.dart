@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hydroponics/models/plant.dart';
+import 'package:flutter_hydroponics/widgets/capsule_with_overlay_text.dart';
 
 
 class PlantCard extends StatelessWidget {
