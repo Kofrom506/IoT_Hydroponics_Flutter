@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hydroponics/configs/configs.dart';
-import 'package:flutter_hydroponics/models/plant.dart';
+import 'package:flutter_hydroponics/models/plant/plant.dart';
 import 'package:flutter_hydroponics/screens/home/home_page_controller.dart';
 import 'package:flutter_hydroponics/widgets/date_picker.dart';
 import 'package:flutter_hydroponics/widgets/plant_carousel.dart';
@@ -72,10 +72,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-

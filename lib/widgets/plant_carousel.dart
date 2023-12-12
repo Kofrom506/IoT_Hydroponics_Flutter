@@ -1,10 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hydroponics/models/plant.dart';
+import 'package:flutter_hydroponics/functions/date_parser.dart';
+import 'package:flutter_hydroponics/functions/loading_function.dart';
+import 'package:flutter_hydroponics/models/plant/plant.dart';
+import 'package:flutter_hydroponics/models/progress/progress_helper.dart';
+import 'package:flutter_hydroponics/widgets/loading_widget.dart';
 
 class PlantCarousel extends StatelessWidget {
   final List<Plant> plantList = Plant.plantList;
-
 
   @override
   Widget build(BuildContext context) {
@@ -18,52 +21,58 @@ class PlantCarousel extends StatelessWidget {
         autoPlay: false,
       ),
       items: plantList.map((plant) {
-        return Stack(children: [
-          ElevatedButton(
-            style: ButtonStyle(),
-            onPressed: () => {
-              DataModal(plantData: plant,)
+        return Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: () => {
+              showDialog(
+                  barrierDismissible: true,
+                  context: context,
+                  builder: (context) {
+                    return DataModal(
+                      plantData: plant,
+                    );
+                  })
             },
-            child: Container(
-              width: double.infinity,
-              child: Card(
-                elevation: 4,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12.0),
-                  child: Image.asset(plant.imageName,
-                      width: screenWidth * 0.1, fit: BoxFit.fitWidth),
+            child: Card(
+              elevation: 4,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12.0),
+                child: Stack(
+                  children: [
+                    Image.asset(plant.imageName, fit: BoxFit.fitWidth),
+                    Container(
+                      color: Color.fromRGBO(133, 147, 99, 0.8),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              plant.name,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              plant.description,
+                              style: TextStyle(
+                                color: Colors.white,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
-          Positioned(
-            top: 8,
-            left: 16,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  plant.name,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  plant.description,
-                  style: TextStyle(
-                    color: Colors.white,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ]);
+        );
       }).toList(),
     );
   }
@@ -76,20 +85,38 @@ class DataModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16.0),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(plantData.name)
-            // Text('Person Count: ${data.personCount}', style: TextStyle(fontSize: 18)),
-            // SizedBox(height: 8),
-            // Text('Date and Time: ${data.dateTime.toString()}', style: TextStyle(fontSize: 18)),
-          ],
-        ),
+    return AlertDialog(
+      title: Text("Kamu Ingin Menanam Tanaman ini?"),
+      content: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text('Tanaman : ${plantData.name}'),
+          const SizedBox(height: 4),
+          Text(
+            'Tanggal dan Waktu Penanaman: ${DateParser.parse(DateTime.now())}',
+          ),
+        ],
       ),
+      actions: [
+        TextButton(
+            onPressed: () async {
+              try {
+                LoadingFunction.showLoadingDialog(context);
+                await ProgressHelper().write(plant: plantData);
+                LoadingFunction.closeLoadingDialog(context);
+                Navigator.of(context).pop();
+              } catch (e) {
+                throw (e);
+              }
+            },
+            child: Text("Tanam")),
+        TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text("Batal"))
+      ],
     );
   }
 }
