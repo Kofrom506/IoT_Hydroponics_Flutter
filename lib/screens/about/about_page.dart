@@ -7,9 +7,12 @@ class AboutPage extends StatefulWidget {
 
 class _AboutPageListState extends State<AboutPage> {
   final List<Item> _items = <Item>[
-    Item('Apa itu?', 'Bikun Hydroponic App adalah '),
-    Item('Bagaimana Cara Memakai Hydroponic App?', 'Hydroponic App adalah '),
-    Item('Tim di Balik Aplikasi', 'Hydroponic App adalah '),
+    Item('Apa itu Hydroponic App?',
+        'Hydroponic App adalah aplikasi untuk mengendalikan devices pemantau pH.'),
+    Item('Bagaimana Cara Memakai Hydroponic App?',
+        'Hydroponic App digunakan untuk melakukan tracking terhadap devices, serta untuk melakukan tracking pertumbuhan tanaman yang ditanam ke hidroponic'),
+    Item('Tim di Balik Aplikasi',
+        'Hydroponic App dibangun oleh Evan Susanto / 200xxxxxxxx'),
   ];
 
   @override
@@ -34,7 +37,8 @@ class _AboutPageListState extends State<AboutPage> {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Container(
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20)),
                       child: ExpansionPanelList(
                         elevation: 1,
                         expandedHeaderPadding: EdgeInsets.all(16.0),
@@ -45,13 +49,23 @@ class _AboutPageListState extends State<AboutPage> {
                         },
                         children: [
                           ExpansionPanel(
-                            headerBuilder: (BuildContext context, bool isExpanded) {
+                            headerBuilder:
+                                (BuildContext context, bool isExpanded) {
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Text(item.header, style: TextStyle(fontWeight: FontWeight.bold)),
+                                child: Text(item.header,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
                               );
                             },
-                            body: Text(item.body),
+                            body: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 20.0,
+                                right: 20.0,
+                                bottom: 20.0,
+                              ),
+                              child: Text(item.body),
+                            ),
                             isExpanded: item.isExpanded,
                           ),
                         ],
@@ -61,26 +75,24 @@ class _AboutPageListState extends State<AboutPage> {
                 }).toList(),
               ),
             ),
-            Spacer(),
+            Center(
+                child: Text(
+              "Hydroponics App \nVer. 1.0.0",
+              textAlign: TextAlign.center,
+            )),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                    'assets/ui.png',
-                    width: screenWidth * 0.1,
-                    fit:BoxFit.fitWidth
-                ),
+                Image.asset('assets/ui.png',
+                    width: screenWidth * 0.1, fit: BoxFit.fitWidth),
                 SizedBox(width: 20),
-                Image.asset(
-                    'assets/dte.png',
-                    width: screenWidth * 0.3,
-                    fit:BoxFit.fitWidth
+                Image.asset('assets/dte.png',
+                    width: screenWidth * 0.3, fit: BoxFit.fitWidth
 
-                  // width: double.infinity,
-                  // height: 150,
-                  // fit: BoxFit.cover,
-                ),
-
+                    // width: double.infinity,
+                    // height: 150,
+                    // fit: BoxFit.cover,
+                    ),
               ],
             ),
           ],

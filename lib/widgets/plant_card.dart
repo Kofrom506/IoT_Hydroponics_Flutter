@@ -5,6 +5,7 @@ import 'package:flutter_hydroponics/widgets/capsule_with_overlay_text.dart';
 class PlantCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var plant = Plant.plantList.firstWhere((element) => element.id == 'bayam');
     return Card(
       elevation: 4,
       shape: RoundedRectangleBorder(
@@ -14,49 +15,70 @@ class PlantCard extends StatelessWidget {
         children: [
           // Plant Image
           Container(
-            width: double.infinity,
             height: 200,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage('https://example.com/your_plant_image.jpg'),
-                fit: BoxFit.cover,
-              ),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(12.0),
-                topRight: Radius.circular(12.0),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(
+                Radius.circular(12.0),
               ),
             ),
           ),
 
           // Overlay Container
           Container(
-            width: double.infinity,
             height: 200,
             decoration: BoxDecoration(
               color: Colors.red.withOpacity(0.4),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(12.0),
-                topRight: Radius.circular(12.0),
+              borderRadius: BorderRadius.all(
+                Radius.circular(12.0),
               ),
             ),
           ),
 
-          Positioned(
-            top: 8,
-            left: 16,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Basil Plant',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          'Basil Plant',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          '(Ocimum Basilium)',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 80,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12.0),
+                        ),
+                        child: Image.asset(
+                          plant.imageName,
+                          fit: BoxFit.scaleDown,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 5,
                 ),
                 Text(
-                  '(Ocimum Basilium)',
+                  plant.description,
                   style: TextStyle(
                     color: Colors.white,
                   ),
@@ -67,12 +89,7 @@ class PlantCard extends StatelessWidget {
           Positioned(
             bottom: 8,
             right: 16,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CapsuleWithOverlayText(),
-              ],
-            ),
+            child: CapsuleWithOverlayText(),
           ),
         ],
       ),

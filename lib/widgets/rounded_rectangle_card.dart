@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hydroponics/configs/configs.dart';
+import 'package:flutter_hydroponics/models/plant/plant.dart';
+import 'package:flutter_hydroponics/models/progress/progress.dart';
 
 class RoundedRectangleCard extends StatelessWidget {
+  RoundedRectangleCard({super.key, required this.progress});
+
+  Progress progress;
   @override
   Widget build(BuildContext context) {
+    Plant plant =
+        Plant.plantList.firstWhere((element) => progress.plantId == element.id);
+    var dayLeft = progress.harvestingDate.difference(DateTime.now()).inDays;
+
+    var weeksLeft = (dayLeft / 7).ceil();
     return Card(
       elevation: 4,
       shape: RoundedRectangleBorder(
@@ -16,7 +26,7 @@ class RoundedRectangleCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(12.0),
             color: Configs.primaryColor,
           ),
-          child: const Center(
+          child: Center(
             child: Padding(
               padding: EdgeInsets.only(left: 16.0),
               child: Row(
@@ -26,7 +36,7 @@ class RoundedRectangleCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        '14',
+                        dayLeft.toString(),
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -42,8 +52,10 @@ class RoundedRectangleCard extends StatelessWidget {
                     ],
                   ),
                   Padding(
-                    padding:
-                    EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0,),
+                    padding: EdgeInsets.symmetric(
+                      vertical: 16.0,
+                      horizontal: 8.0,
+                    ),
                     child: VerticalDivider(color: Colors.white),
                   ),
                   Expanded(
@@ -51,13 +63,15 @@ class RoundedRectangleCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Check your Basil plants!",
+                        Text("Cek Tanamanmu ${plant.name}",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w800)),
-                        Text("Today you have to water 2 weeks until harvest",
-                            style: TextStyle(color: Colors.white, fontSize: 12)),
+                        Text(
+                            "Jangan Lupa Awasi Tanamanmu \n ${weeksLeft} Minggu lagi ${plant.name} Dapat dipanen",
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 12)),
                       ],
                     ),
                   ),
