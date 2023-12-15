@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hydroponics/models/progress/progress.dart';
 import 'package:flutter_hydroponics/models/progress/progress_helper.dart';
+import 'package:flutter_hydroponics/models/status/status.dart';
+import 'package:flutter_hydroponics/models/status/status_helper.dart';
 import 'package:flutter_hydroponics/screens/home/home_page_controller.dart';
 import 'package:flutter_hydroponics/widgets/loading_widget.dart';
 import 'package:flutter_hydroponics/widgets/plant_carousel.dart';
@@ -23,14 +26,14 @@ class HomePage extends StatelessWidget {
               snapshot.connectionState == ConnectionState.done) {
             return SafeArea(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Row(
+                      Row(
                         children: [
-                          CircleAvatar(),
+                          const CircleAvatar(),
                           SizedBox(width: 10),
                           Text(
                             "Hi Evan,",
@@ -44,7 +47,7 @@ class HomePage extends StatelessWidget {
                           Icon(FontAwesomeIcons.bell),
                         ],
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       const Text(
                         "Select your plants for Hydroponics!",
                         style: TextStyle(
@@ -53,7 +56,7 @@ class HomePage extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Center(
                           child: RoundedRectangleCard(
                         progress: snapshot.data!.first ??
@@ -65,10 +68,39 @@ class HomePage extends StatelessWidget {
                                 harvestingDate: DateTime.now(),
                                 plantingDate: DateTime.now()),
                       )),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       PlantCard(),
-                      SizedBox(height: 20),
-                      Text(
+                      const SizedBox(height: 10),
+                      StreamBuilder<Iterable<Status?>>(
+                          stream: StatusHelper().list(),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasData) {
+                              Status latest = snapshot.data!.last!;
+                              return Row(
+                                children: [
+                                  Expanded(
+                                    child: Card(
+                                      child: ListTile(
+                                        title: Text(latest.ph.toString()),
+                                        subtitle: Text('pH value'),
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Card(
+                                      child: ListTile(
+                                        title: Text(latest.ec.toString()),
+                                        subtitle: Text('EC Value'),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            } else
+                              return Container();
+                          }),
+                      const SizedBox(height: 20),
+                      const Text(
                         "Recommendation",
                         style: TextStyle(
                           color: Colors.black,
@@ -83,7 +115,7 @@ class HomePage extends StatelessWidget {
               ),
             );
           } else {
-            return LoadingWidget();
+            return const LoadingWidget();
           }
         });
   }

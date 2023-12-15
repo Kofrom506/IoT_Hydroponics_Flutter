@@ -12,11 +12,7 @@ class PompaPage extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            children: [
-              Text("Pump Control"),
-              Spacer(),
-              Icon(Icons.info)
-            ],
+            children: [Text("Pump Control"), Spacer(), Icon(Icons.info)],
           ),
           Divider(),
           HydroponicsControl(),
@@ -39,13 +35,12 @@ class PompaPage extends StatelessWidget {
                 ),
               ),
             ],
-          )
+          ),
         ],
       ),
     );
   }
 }
-
 
 class HydroponicsControl extends StatefulWidget {
   @override
@@ -76,9 +71,10 @@ class _HydroponicsControlState extends State<HydroponicsControl> {
             child: FittedBox(
               fit: BoxFit.contain,
               child: IconButton(
-                icon: Icon(isHydroponicsOn ? Icons.power_settings_new : Icons.power_off),
+                icon: Icon(isHydroponicsOn
+                    ? Icons.power_settings_new
+                    : Icons.power_off),
                 iconSize: 150,
-
                 onPressed: toggleHydroponics,
               ),
             ),
