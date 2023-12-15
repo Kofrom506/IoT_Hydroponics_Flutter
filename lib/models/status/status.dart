@@ -12,8 +12,8 @@ class Status {
     return data == null
         ? null
         : Status(
-            ph: data["ph_value"] ?? 0,
-            ec: data["ec_value"] ?? 0,
+            ph: double.tryParse(data["ph_value"].toString()) ?? 0.0,
+            ec: double.tryParse(data["ec_value"].toString()) ?? 0.0,
           );
   }
 

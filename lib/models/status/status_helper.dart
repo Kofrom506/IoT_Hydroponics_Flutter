@@ -34,6 +34,7 @@ class StatusHelper {
     var col = instance.collection('cikidang2');
     var snapshot = col.snapshots();
     var result = snapshot.mapList(Status.fromMap);
+
     return result;
   }
 

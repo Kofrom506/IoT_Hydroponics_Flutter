@@ -97,7 +97,7 @@ class HomePage extends StatelessWidget {
                                 ],
                               );
                             } else
-                              return Container();
+                              return LoadingWidget();
                           }),
                       const SizedBox(height: 20),
                       const Text(
