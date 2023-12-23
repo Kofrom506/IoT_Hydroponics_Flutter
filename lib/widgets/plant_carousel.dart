@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hydroponics/functions/date_parser.dart';
 import 'package:flutter_hydroponics/functions/loading_function.dart';
 import 'package:flutter_hydroponics/models/plant/plant.dart';
+import 'package:flutter_hydroponics/models/plant/plant_helper.dart';
 import 'package:flutter_hydroponics/models/progress/progress_helper.dart';
 import 'package:flutter_hydroponics/widgets/loading_widget.dart';
 
@@ -29,9 +30,7 @@ class PlantCarousel extends StatelessWidget {
                   barrierDismissible: true,
                   context: context,
                   builder: (context) {
-                    return DataModal(
-                      plantData: plant,
-                    );
+                    return DataModal(plantData: plant);
                   })
             },
             child: Card(
@@ -104,6 +103,7 @@ class DataModal extends StatelessWidget {
               try {
                 LoadingFunction.showLoadingDialog(context);
                 await ProgressHelper().write(plant: plantData);
+                await PlantHelper().writeNow(plant: plantData);
                 LoadingFunction.closeLoadingDialog(context);
                 Navigator.of(context).pop();
               } catch (e) {
