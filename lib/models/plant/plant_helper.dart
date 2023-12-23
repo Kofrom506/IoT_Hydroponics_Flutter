@@ -5,6 +5,6 @@ class PlantHelper {
   final instance = FirebaseFirestore.instance;
 
   Future<void> writeNow({required Plant plant}) async {
-    await instance.collection('plants').doc("now").set(plant.toVariables());
+    await instance.collection('now').doc("now").set(plant.toVariables());
   }
 }
