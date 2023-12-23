@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../configs/configs.dart';
 
-
 class CapsuleWithOverlayText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -11,7 +10,7 @@ class CapsuleWithOverlayText extends StatelessWidget {
       height: 50, // Adjust the height as needed
       decoration: BoxDecoration(
         borderRadius:
-        BorderRadius.circular(50), // Half of the height for a capsule shape
+            BorderRadius.circular(50), // Half of the height for a capsule shape
         color: Colors.white.withOpacity(0.2),
         // Background color of the capsule
       ),
@@ -21,7 +20,7 @@ class CapsuleWithOverlayText extends StatelessWidget {
           Text(
             'See Details →',
             style: TextStyle(
-              color: Configs.primaryColor,
+              color: Colors.black,
               fontSize: 15,
             ),
           ),
